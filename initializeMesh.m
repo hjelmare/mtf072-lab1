@@ -11,7 +11,8 @@ function [T, pY, pX] = initializeMesh(edgesY, edgesX,T1,T2)
     outMesh(1,:) = T1;
     outMesh(:,end) = T2;
     % b3 is insulating, so it gets dealt with elsewhere
-    outMesh(:,1) = (1:length(ptPosY)) * (20/length(ptPosY));
+    %outMesh(:,1) = (1:length(ptPosY)) * (20/length(ptPosY));
+    outMesh(:,1) = ptPosY*20;
 
 
     T = outMesh;
