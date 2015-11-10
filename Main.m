@@ -4,6 +4,7 @@ clear variables;
 
 %Declaration of scalar variables
 maxIterations = 2000;
+maxIterations = 1;
 meshSize = 10;
 initialT = 5;
 kFactor = 1;
@@ -32,5 +33,5 @@ end
 
 [xMesh,yMesh] = meshgrid(x,y);
 %Plotting result
-figure();
+figure(1);
 contourf(yMesh,xMesh,T);

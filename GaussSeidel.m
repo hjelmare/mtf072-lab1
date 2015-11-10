@@ -13,10 +13,8 @@ function T = GaussSeidel(T,x,y,deltaX,deltaY,T1,c1,c2,kFactor)
     sCoeff(2,:) = 0.5;
     
     %Performing Gauss-Seidel update    
-    disp('hej')
     for j = 2:cols-1
         for i = 2:rows-1
-            disp([i j])
             dXeast = (x(j+1) - x(j)) * eCoeff(i,j);
             dXwest = (x(j) - x(j-1)) * wCoeff(i,j);
             dYnorth = (y(i+1) - y(i)) * nCoeff(i,j);
