@@ -17,6 +17,7 @@ edgesY = [0 .2 .4 .6 .8 1.0];
 %Initializing mesh and temperature
 
 
+
 %Gauss-Seidel loop
 for i = 1:maxIterations
    
