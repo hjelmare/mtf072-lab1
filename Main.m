@@ -30,6 +30,7 @@ for i = 1:maxIterations
     
 end
 
+[xMesh,yMesh] = meshgrid(x,y);
 %Plotting result
 figure();
-contourf(y,x,T);
+contourf(yMesh,xMesh,T);
