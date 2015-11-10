@@ -4,8 +4,6 @@ clear variables;
 
 %Declaration of scalar variables
 maxIterations = 2000;
-maxIterations = 50;
-%maxIterations = 1;
 meshSize = 10;
 initialT = 5;
 kFactor = 1;
