@@ -4,7 +4,8 @@ clear variables;
 
 %Declaration of scalar variables
 maxIterations = 2000;
-maxIterations = 1;
+maxIterations = 50;
+%maxIterations = 1;
 meshSize = 10;
 initialT = 5;
 kFactor = 1;
@@ -24,14 +25,20 @@ deltaX = [1 deltaX 1];
 deltaY = diff(edgesY);
 deltaY = [1 deltaY 1];
 
+[xMesh,yMesh] = meshgrid(x,y);
+
+
+
 %Gauss-Seidel loop
 for i = 1:maxIterations
    
     T = GaussSeidel(T,x,y,deltaX,deltaY,T1,c1,c2,kFactor);  
+
+    pause(0.01)
+    figure(1);
+    contourf(xMesh,yMesh,T);
+    drawnow
     
 end
 
-[xMesh,yMesh] = meshgrid(x,y);
-%Plotting result
-figure(1);
-contourf(yMesh,xMesh,T);
+
