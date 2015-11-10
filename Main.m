@@ -4,7 +4,6 @@ clear variables;
 
 %Declaration of scalar variables
 maxIterations = 2000;
-maxIterations = 1;
 meshSize = 10;
 initialT = 5;
 kFactor = 1;
@@ -14,8 +13,8 @@ T1 = 10;
 T2 = 20;
 c1 = 20;
 c2 = 0.2;
-edgesX = [0 .15 .2 .3 .4 .5 .6 .7 .8 .999 1.0];
-edgesY = [0 .2 .4 .6 .8 1.0];
+edgesX = [0:0.01:1];
+edgesY = [0:0.01:1];
 
 %Initializing mesh and temperature
 [T, y, x] = initializeMesh(edgesY, edgesX,T1,T2);
@@ -31,7 +30,8 @@ for i = 1:maxIterations
     
 end
 
-[xMesh,yMesh] = meshgrid(x,y);
+T = T(2:end-1,2:end-1);
+[xMesh,yMesh] = meshgrid(x(2:end-1),y(2:end-1));
 %Plotting result
 figure(1);
-contourf(yMesh,xMesh,T);
+contourf(xMesh,yMesh,T,20);
