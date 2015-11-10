@@ -21,7 +21,8 @@ edgesY = [0 .2 .4 .6 .8 1.0];
 deltaX = diff(edgesX);
 deltaX = [1 deltaX 1];
 deltaY = diff(edgesY);
-deltaY = [1 deltaY 1];
+%%
+
 
 %Gauss-Seidel loop
 for i = 1:maxIterations
