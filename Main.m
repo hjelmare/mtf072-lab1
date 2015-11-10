@@ -12,6 +12,7 @@ T2 = 20;
 c1 = 20;
 c2 = 0.2;
 
+
 %Gauss-Seidel loop
 for i = 1:maxIterations
    
