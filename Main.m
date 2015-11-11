@@ -23,8 +23,8 @@ edgesX = [0:0.01:1];
 edgesY = [0:0.01:1];
 
 % Overly coarse grid
-edgesX = [0:0.1:1];
-edgesY = [0:0.1:1];
+% edgesX = [0:0.1:1];
+% edgesY = [0:0.1:1];
 
 
 tic
@@ -55,10 +55,10 @@ hold on
 % Grid points
 plot(xMesh,yMesh,'r.')
 % Boundary conditions (green for heat flux (Dirichlet), red for Neumann)
-plot([0.05 0.95],[0.05 0.05],'g','LineWidth',3)
-plot([0.95 0.95],[0.05 0.95],'g','LineWidth',3)
-plot([0.05 0.95],[0.95 0.95],'r','LineWidth',3)
-plot([0.05 0.05],[0.05 0.95],'g','LineWidth',3)
+plot([x(2) x(end-1)],[y(2) y(2)],'g','LineWidth',3)
+plot([x(end-1) x(end-1)],[y(2) y(end-1)],'g','LineWidth',3)
+plot([x(2) x(end-1)],[y(end-1) y(end-1)],'r','LineWidth',3)
+plot([x(2) x(2)],[y(2) y(end-1)],'g','LineWidth',3)
 hold off
 
 time = toc;
