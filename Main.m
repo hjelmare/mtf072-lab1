@@ -3,7 +3,7 @@ clc;
 clear variables;
 
 %Declaration of scalar variables
-maxIterations = 2000;
+maxDiff = 1e-3;
 meshSize = 10;
 initialT = 5;
 kFactor = 1;
@@ -40,9 +40,10 @@ deltaY = [1 deltaY 1];
 
 
 %Gauss-Seidel loop
-for i = 1:maxIterations
+epsilon = inf;
+while (epsilon > maxDiff)
    
-    T = GaussSeidel(T,x,y,deltaX,deltaY,T1,c1,c2,kFactor);  
+    [T,epsilon] = GaussSeidel(T,x,y,deltaX,deltaY,T1,c1,c2,kFactor);  
 
 %    pause(0.01)
 %    figure(2);
