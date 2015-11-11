@@ -13,9 +13,21 @@ T1 = 10;
 T2 = 20;
 c1 = 20;
 c2 = 0.2;
+
+% Non-uniform grid
+edgesX = [0:0.01:0.2 0.25:0.05:0.85 0.855:0.01:1];
+edgesY = [0:0.01:0.2 0.25:0.05:1];
+
+% Finer but uniform
 edgesX = [0:0.01:1];
 edgesY = [0:0.01:1];
 
+% Overly coarse grid
+edgesX = [0:0.1:1];
+edgesY = [0:0.1:1];
+
+
+tic
 %Initializing mesh and temperature
 [T, y, x] = initializeMesh(edgesY, edgesX,T1,T2);
 deltaX = diff(edgesX);
@@ -44,3 +56,11 @@ T = T(2:end-1,2:end-1);
 %Plotting result
 figure(1);
 contourf(xMesh,yMesh,T,20);
+hold on
+plot(xMesh,yMesh,'r.')
+hold off
+
+time = toc;
+disp([num2str(length(x)) 'x' num2str(length(y)) ' pts in ' num2str(time) ' s' ])
+
+saveas(gcf,[num2str(length(x)) 'x' num2str(length(y)) '.png'],'png')
