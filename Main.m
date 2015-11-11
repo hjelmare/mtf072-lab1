@@ -18,7 +18,12 @@ c2 = 0.2;
 edgesX = [0:0.01:0.2 0.25:0.05:0.85 0.855:0.01:1];
 edgesY = [0:0.01:0.2 0.25:0.05:1];
 
-% % Finer but uniform
+
+% Non-uniform grid for Dirichlet T3=0
+edgesX = [0:0.01:0.35 0.4:0.05:0.85 0.855:0.01:1];
+edgesY = [0:0.01:0.2 0.25:0.05:0.5 0.51:0.01:1];
+
+% Finer but uniform
 % edgesX = [0:0.01:1];
 % edgesY = [0:0.01:1];
 
@@ -59,11 +64,12 @@ plot(xMesh,yMesh,'r.')
 % Boundary conditions (green for heat flux (Dirichlet), red for Neumann)
 plot([x(2) x(end-1)],[y(2) y(2)],'g','LineWidth',3)
 plot([x(end-1) x(end-1)],[y(2) y(end-1)],'g','LineWidth',3)
-plot([x(2) x(end-1)],[y(end-1) y(end-1)],'r','LineWidth',3)
+plot([x(2) x(end-1)],[y(end-1) y(end-1)],'g','LineWidth',3)
 plot([x(2) x(2)],[y(2) y(end-1)],'g','LineWidth',3)
 hold off
 
 time = toc;
 disp([num2str(length(x)) 'x' num2str(length(y)) ' pts in ' num2str(time) ' s' ])
 
-saveas(gcf,['100k' num2str(length(x)) 'x' num2str(length(y)) '.png'],'png')
+saveas(gcf,[num2str(length(x)) 'x' num2str(length(y)) '_bc.png'],'png')
+
