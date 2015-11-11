@@ -6,7 +6,7 @@ clear variables;
 maxDiff = 1e-3;
 meshSize = 10;
 initialT = 5;
-kFactor = 1;
+kFactor = 100;
 L = 1;
 H = 1;
 T1 = 10;
@@ -18,9 +18,9 @@ c2 = 0.2;
 edgesX = [0:0.01:0.2 0.25:0.05:0.85 0.855:0.01:1];
 edgesY = [0:0.01:0.2 0.25:0.05:1];
 
-% Finer but uniform
-edgesX = [0:0.01:1];
-edgesY = [0:0.01:1];
+% % Finer but uniform
+% edgesX = [0:0.01:1];
+% edgesY = [0:0.01:1];
 
 % Overly coarse grid
 % edgesX = [0:0.1:1];
@@ -66,4 +66,4 @@ hold off
 time = toc;
 disp([num2str(length(x)) 'x' num2str(length(y)) ' pts in ' num2str(time) ' s' ])
 
-saveas(gcf,[num2str(length(x)) 'x' num2str(length(y)) '.png'],'png')
+saveas(gcf,['100k' num2str(length(x)) 'x' num2str(length(y)) '.png'],'png')
