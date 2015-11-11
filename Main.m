@@ -57,6 +57,7 @@ T = T(2:end-1,2:end-1);
 %Plotting result
 figure(1);
 contourf(xMesh,yMesh,T,20);
+colorbar;
 hold on
 % Grid points
 plot(xMesh,yMesh,'r.')
