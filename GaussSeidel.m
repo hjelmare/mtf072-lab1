@@ -8,7 +8,7 @@ function [T,epsilon] = GaussSeidel(T,x,y,deltaX,deltaY,T1,c1,c2,kFactor)
     wCoeff = ones(rows,cols);
     wCoeff(:,2) = 2;
     nCoeff = ones(rows,cols);
-    nCoeff(rows-1,:) = 2;   % this is originally 0
+    nCoeff(rows-1,:) = 0;   % this is originally 0
     sCoeff = ones(rows,cols);
     sCoeff(2,:) = 2;
     
