@@ -35,8 +35,6 @@ deltaX = [1 deltaX 1];
 deltaY = diff(edgesY);
 deltaY = [1 deltaY 1];
 
-[xMesh,yMesh] = meshgrid(x,y);
-
 
 
 %Gauss-Seidel loop
@@ -44,11 +42,6 @@ epsilon = inf;
 while (epsilon > maxDiff)
    
     [T,epsilon] = GaussSeidel(T,x,y,deltaX,deltaY,T1,c1,c2,kFactor);  
-
-%    pause(0.01)
-%    figure(2);
-%    contourf(xMesh,yMesh,T);
-%    drawnow
     
 end
 
