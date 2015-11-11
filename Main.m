@@ -57,7 +57,13 @@ T = T(2:end-1,2:end-1);
 figure(1);
 contourf(xMesh,yMesh,T,20);
 hold on
+% Grid points
 plot(xMesh,yMesh,'r.')
+% Boundary conditions (green for heat flux (Dirichlet), red for Neumann)
+plot([0.05 0.95],[0.05 0.05],'g','LineWidth',3)
+plot([0.95 0.95],[0.05 0.95],'g','LineWidth',3)
+plot([0.05 0.95],[0.95 0.95],'r','LineWidth',3)
+plot([0.05 0.05],[0.05 0.95],'g','LineWidth',3)
 hold off
 
 time = toc;
