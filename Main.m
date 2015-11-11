@@ -51,6 +51,7 @@ end
 
 T = T(2:end-1,2:end-1);
 [xMesh,yMesh] = meshgrid(x(2:end-1),y(2:end-1));
+
 %Plotting result
 figure(1);
 contourf(xMesh,yMesh,T,20);
@@ -58,6 +59,7 @@ colorbar;
 hold on
 % Grid points
 plot(xMesh,yMesh,'r.')
+
 % Boundary conditions (green for heat flux (Dirichlet), red for Neumann)
 plot([x(2) x(end-1)],[y(2) y(2)],'g','LineWidth',3)
 plot([x(end-1) x(end-1)],[y(2) y(end-1)],'g','LineWidth',3)
