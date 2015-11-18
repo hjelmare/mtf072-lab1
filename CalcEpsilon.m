@@ -1,4 +1,4 @@
-function T = GaussSeidel(T,x,y,deltaX,deltaY,T1,c1,c2,kFactor)
+function epsilon = CalcEpsilon(T,x,y,deltaX,deltaY,T1,c1,c2,kFactor)
 
     [rows,cols] = size(T);  
     
@@ -12,11 +12,11 @@ function T = GaussSeidel(T,x,y,deltaX,deltaY,T1,c1,c2,kFactor)
     sCoeff = ones(rows,cols);
     sCoeff(2,:) = 2;
     
-    %Performing Gauss-Seidel update
+    %Calculating residuals
     maxR = 0;
     for j = 2:cols-1
         for i = 2:rows-1
-            %Calculating parts of update equation
+            %Calculating parts of residual equation
             dXeast = (x(j+1) - x(j));
             dXwest = (x(j) - x(j-1));
             dYnorth = (y(i+1) - y(i));
@@ -34,12 +34,14 @@ function T = GaussSeidel(T,x,y,deltaX,deltaY,T1,c1,c2,kFactor)
             bu = 15*c1*deltaX(j)*deltaY(i);
             ap = ae + aw + an + as - bp;
             
-            %Performing update on T(i,j)
-            T(i,j) = (ae*Te + aw*Tw + an*Tn + as*Ts + bu)/ap;
-            
+            %Calculating maximum residual
+            R = abs(ap*Tp - ae*Te - aw*Tw - an*Tn - as*Ts - bu);
+            if (R > maxR)
+                maxR = R;
+            end            
         end
     end
     
-    
+    epsilon = maxR;
 
 end

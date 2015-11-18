@@ -1,5 +1,5 @@
 %Main program in CFD assignment K1
-clc;
+%clc;
 clear variables;
 
 %Declaration of scalar variables
@@ -42,10 +42,11 @@ deltaY = [1 deltaY 1];
 epsilon = inf;
 while (epsilon > maxDiff)
    
-    [T,epsilon] = GaussSeidel(T,x,y,deltaX,deltaY,T1,c1,c2,kFactor);  
+    T = GaussSeidel(T,x,y,deltaX,deltaY,T1,c1,c2,kFactor); 
+    epsilon = CalcEpsilon(T,x,y,deltaX,deltaY,T1,c1,c2,kFactor); 
     
 end
-
+time = toc;
 %Calculate gradient
 [dX,dY] = CalcGradient(T,x,y);
 
@@ -56,13 +57,13 @@ T = T(2:end-1,2:end-1);
 figure(1);
 contourf(xMesh,yMesh,T,20);
 hold on
-quiver(x(2:2:end-1),y(2:2:end-1),-dX(1:2:end,1:2:end),-dY(1:2:end,1:2:end),'r','AutoScaleFactor',5);
+%quiver(x(2:2:end-1),y(2:2:end-1),-dX(1:2:end,1:2:end),-dY(1:2:end,1:2:end),'r','AutoScaleFactor',5);
 axis equal
 axis([x(2) x(end-1) y(2) y(end-1)]);
 colorbar;
 
 % Plot grid points
-%plot(xMesh,yMesh,'r.')
+plot(xMesh,yMesh,'r.')
 
 
 % Boundary conditions (green for heat flux (Dirichlet), red for Neumann)
@@ -72,7 +73,7 @@ plot([x(2) x(end-1)],[y(end-1) y(end-1)],'r','LineWidth',3)
 plot([x(2) x(2)],[y(2) y(end-1)],'g','LineWidth',3)
 hold off
 
-time = toc;
+
 disp([num2str(length(x)) 'x' num2str(length(y)) ' pts in ' num2str(time) ' s' ])
  
 saveas(gcf,['vector' num2str(length(x)) 'x' num2str(length(y)) '.png'],'png')
